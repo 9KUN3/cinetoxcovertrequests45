@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Contenido - CineTox</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("eOIyC0mLYqzguBPqo"); // Reemplaza con tu User ID de EmailJS
+        })();
+    </script>
+<link type="text/css" rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+    <div class="container">
+        <h1>Solicitud de Contenido</h1>
+        <form id="content-request-form">
+    <div class="form-group">
+        <label for="content-type">Tipo de Contenido</label>
+        <select id="content-type" name="content_type" required>
+            <option value="" disabled selected>Seleccione una opción</option>
+            <option value="Pelicula">Película</option>
+            <option value="Serie">Serie</option>
+        </select>
+    </div>
+    <div id="serie-note" class="note">
+        <p>En caso de solicitud de Series: Por el momento solo se agregan series en Audio Español, principalmente Audio Latino. En caso que la serie se encuentre en audio Español (España) será agregada solo si no se encuentra en Latino o si el origen del Audio es Español (España).</p>
+    </div>
+    <div class="form-group">
+        <label for="content-name">Nombre del Contenido</label>
+        <input type="text" id="content-name" name="content_name" required>
+    </div>
+    <div class="form-group">
+        <label for="content-language">Idioma Preferido</label>
+        <input type="text" id="content-language" name="content_language" required>
+    </div>
+    <button type="submit">Enviar Solicitud</button>
+        </form>
+        <div id="success-message" class="success-message">
+            <p>¡El formulario se ha enviado exitosamente!</p>
+            <p>Nota: Por lo general, el contenido será agregado en un plazo máximo de 72 horas, aunque esto puede variar dependiendo del volumen de solicitudes.</p>
+            <p>¿Por qué?</p>
+            <p>Aunque trabajamos incansablemente para mantener el mayor contenido disponible y en óptimas condiciones, también somos humanos con vidas aparte de la aplicación.</p>
+            <ul>
+                <li>La calidad de las películas y series puede variar según su popularidad. Cuanto más popular sea, mejor será la calidad (esto también se aplica al idioma). Esto no depende de nosotros, sino de la disponibilidad del contenido. Entre más reciente, mejor calidad.</li>
+                <li>Nos esforzamos por satisfacer todas las solicitudes de películas/series que recibimos 😎, pero hay algunas que están fuera de nuestro alcance, ya sea porque son antiguas o porque no son lo suficientemente populares como para estar disponibles en internet. Esperamos que comprendan esta limitación.</li>
+            </ul>
+            <p>La mejor manera de agradecer nuestro esfuerzo es compartiendo la aplicación y disfrutando del contenido.</p>
+            <p>Además, te invitamos a unirte a nuestro <a href="https://t.me/+Cu422y0-pxAzMzJh" target="_blank">Grupo de Telegram, CineTox°Pedidos ✋</a>, donde también puedes solicitar contenido y interactuar con otros usuarios. ¡Es útil para agilizar el proceso de tu solicitud!</p>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
