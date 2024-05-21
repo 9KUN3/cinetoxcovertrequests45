@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="cache-control" content="no-cache"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="-1"><style type="text/css">body {
+    background-color: #121212;
+    color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #1e1e2f;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+}
+
+h1 {
+    text-align: center;
+    color: #e0e0ff;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #c0c0ff;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background-color: #2b2b40;
+    color: #f0f0f0;
+}
+
+button {
+    background-color: #3b3b5c;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4b4b7c;
+}
+
+.note {
+    background-color: #2b2b40;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    color: #c0c0ff;
+}
+
+.success-message {
+    display: none;
+    background-color: #1e1e2f;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 15px;
+    text-align: center;
+    color: #c0c0ff;
+}
+
+a {
+    color: #8ab4f8;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+</style>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Contenido - CineTox</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("eOIyC0mLYqzguBPqo"); // Reemplaza con tu User ID de EmailJS
+        })();
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Solicitud de Contenido</h1>
+        <form id="content-request-form">
+    <div class="form-group">
+        <label for="content-type">Tipo de Contenido</label>
+        <select id="content-type" name="content_type" required="">
+            <option value="" disabled="" selected="">Seleccione una opción</option>
+            <option value="Pelicula">Película</option>
+            <option value="Serie">Serie</option>
+        </select>
+    </div>
+    <div id="serie-note" class="note">
+        <p>En caso de solicitud de Series: Por el momento solo se agregan series en Audio Español, principalmente Audio Latino. En caso que la serie se encuentre en audio Español (España) será agregada solo si no se encuentra en Latino o si el origen del Audio es Español (España).</p>
+    </div>
+    <div class="form-group">
+        <label for="content-name">Nombre del Contenido</label>
+        <input type="text" id="content-name" name="content_name" required="">
+    </div>
+    <div class="form-group">
+        <label for="content-language">Idioma Preferido</label>
+        <input type="text" id="content-language" name="content_language" required="">
+    </div>
+    <button type="submit">Enviar Solicitud</button>
+        </form>
+        <div id="success-message" class="success-message">
+            <p>¡El formulario se ha enviado exitosamente!</p>
+            <p>Nota: Por lo general, el contenido será agregado en un plazo máximo de 72 horas, aunque esto puede variar dependiendo del volumen de solicitudes.</p>
+            <p>¿Por qué?</p>
+            <p>Aunque trabajamos incansablemente para mantener el mayor contenido disponible y en óptimas condiciones, también somos humanos con vidas aparte de la aplicación.</p>
+            <ul>
+                <li>La calidad de las películas y series puede variar según su popularidad. Cuanto más popular sea, mejor será la calidad (esto también se aplica al idioma). Esto no depende de nosotros, sino de la disponibilidad del contenido. Entre más reciente, mejor calidad.</li>
+                <li>Nos esforzamos por satisfacer todas las solicitudes de películas/series que recibimos 😎, pero hay algunas que están fuera de nuestro alcance, ya sea porque son antiguas o porque no son lo suficientemente populares como para estar disponibles en internet. Esperamos que comprendan esta limitación.</li>
+            </ul>
+            <p>La mejor manera de agradecer nuestro esfuerzo es compartiendo la aplicación y disfrutando del contenido.</p>
+            <p>Además, te invitamos a unirte a nuestro <a href="https://t.me/+Cu422y0-pxAzMzJh" target="_blank">Grupo de Telegram, CineTox°Pedidos ✋</a>, donde también puedes solicitar contenido y interactuar con otros usuarios. ¡Es útil para agilizar el proceso de tu solicitud!</p>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+
+
+<script>document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('content-request-form');
+    const successMessage = document.getElementById('success-message');
+    const serieNote = document.getElementById('serie-note');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        emailjs.sendForm('service_hxjae03', 'template_cinetox4dsd', form)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                form.reset();
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+            }, function(error) {
+                console.log('FAILED...', error);
+            });
+    });
+
+    document.getElementById('content-type').addEventListener('change', function() {
+        if (this.value === 'Serie') {
+            serieNote.style.display = 'block';
+        } else {
+            serieNote.style.display = 'none';
+        }
+    });
+});
+</script></body>
